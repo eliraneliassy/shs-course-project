@@ -2,8 +2,17 @@
     <div class="title">
         {{item.description}}
     </div>
-    <img class="img"
-    [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}">
+    <img class="img" [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}">
     <div>{{item.price | currency}}</div>
+    <div>
+        <button class="btn btn-primary" *ngIf="existInCart; else elseBlock"
+        (click)="addToCartClicked(item)">Add to cart</button>
+        <ng-template #elseBlock>
+            <button class="btn btn-danger"
+            (click)="removeFromCartClicked(item)">Remove from cart</button>
+        </ng-template>
+
+    </div>
+
 
 </div>
