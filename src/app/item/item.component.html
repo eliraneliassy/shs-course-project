@@ -1,0 +1,9 @@
+<div class="item">
+    <div class="title">
+        {{item.description}}
+    </div>
+    <img class="img"
+    [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}">
+    <div>{{item.price | currency}}</div>
+
+</div>
