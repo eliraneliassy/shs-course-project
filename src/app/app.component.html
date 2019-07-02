@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-    <app-item *ngFor="let item of items" [item]="item" class="col-3"
+    <app-item *ngFor="let item of (items$ | async)" [item]="item" class="col-3"
     (addToCart)="addToCart($event)" (removeFromCart)="removeFromCart($event)"
     [existInCart]="!existInCart(item)"></app-item>
 </div>
