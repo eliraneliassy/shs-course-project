@@ -8,21 +8,23 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
-  
-  //items: Item[] = [];
-  items$: Observable<Item[]>;
-  shoppingCart: Item[] = [];
 
-  constructor(private feedService: FeedService) {}
+  items: Item[] = [];
+  // items$: Observable<Item[]>;
+  shoppingCart: Item[] = [];
+  loading: boolean;
+  page: number = 0;
+
+
+  constructor(private feedService: FeedService) { }
 
   ngOnInit(): void {
     //this.feedService.getFeed(0).subscribe((items: Item[]) => this.items = items);
-    this.items$ = this.feedService.getFeed(0);
+    this.feedService.getFeed(this.page).subscribe((res: Item[]) => this.items = res);
   }
 
   addToCart(item: Item) {
@@ -37,7 +39,18 @@ export class AppComponent implements OnInit {
 
   }
 
-  existInCart(item: Item): boolean{
+  existInCart(item: Item): boolean {
     return this.shoppingCart.findIndex(x => x._id === item._id) > -1 ? true : false;
+  }
+
+  loadMore() {
+    this.page++;
+    this.loading = true;
+    this.feedService.getFeed(this.page).subscribe(
+      (res: Item[]) => {
+        this.items = [...this.items, ...res];
+        this.loading = false;
+      }
+    )
   }
 }
