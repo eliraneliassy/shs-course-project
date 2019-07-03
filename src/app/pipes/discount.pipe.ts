@@ -6,7 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DiscountPipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
-    return null;
+    console.log(args);
+    return value > args[0] ? value * args[1] : value
   }
 
 }

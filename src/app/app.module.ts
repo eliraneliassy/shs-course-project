@@ -9,6 +9,10 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { InfinteScrollDirective } from './directives/infinte-scroll.directive';
 import { NgNotIfDirective } from './directives/ng-not-if.directive';
 import { DiscountPipe } from './pipes/discount.pipe';
+import { AuthService } from './services/auth.service';
+import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,9 @@ import { DiscountPipe } from './pipes/discount.pipe';
     HighlightDirective,
     InfinteScrollDirective,
     NgNotIfDirective,
-    DiscountPipe
+    DiscountPipe,
+    HeaderComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,

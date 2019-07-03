@@ -1,0 +1,13 @@
+<div class="container" appInfinteScroll (endOfPage)="loadMore($event)" [loading]="loading">
+        <div class="row">
+            <app-item *ngFor="let item of items" [item]="item" class="col-3" (addToCart)="addToCart($event)"
+                (removeFromCart)="removeFromCart($event)" [existInCart]="!existInCart(item)">
+                <p style="color: red">
+                    Hello from App Component
+                </p>
+            </app-item>
+        </div>
+        <div class="row">
+            Loading...
+        </div>
+    </div>

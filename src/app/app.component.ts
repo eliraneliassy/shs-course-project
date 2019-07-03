@@ -1,8 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { db } from './db';
 import { Item } from './item';
 import { FeedService } from './services/feed.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { AuthService } from './services/auth.service';
 
 
 @Component({
@@ -10,47 +11,28 @@ import { Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+  
 
+  user: string;
+  userSub: Subscription;
 
-  items: Item[] = [];
-  // items$: Observable<Item[]>;
-  shoppingCart: Item[] = [];
-  loading: boolean;
-  page: number = 0;
-
-
-  constructor(private feedService: FeedService) { }
-
+  constructor(private authService: AuthService) { }
   ngOnInit(): void {
-    //this.feedService.getFeed(0).subscribe((items: Item[]) => this.items = items);
-    this.feedService.getFeed(this.page).subscribe((res: Item[]) => this.items = res);
+    this.authService.setUserName('Motti');
+    this.userSub =
+      this.authService.getUserName()
+        .subscribe((user: string) => this.user = user);
   }
 
-  addToCart(item: Item) {
-    this.shoppingCart.push(item);
+  changeName() {
+    this.authService.setUserName('Shai');
   }
 
-  removeFromCart(item: Item) {
-    const index = this.shoppingCart.findIndex(x => x._id === item._id);
-    if (index > -1) {
-      this.shoppingCart.splice(index, 1);
-    }
-
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
   }
 
-  existInCart(item: Item): boolean {
-    return this.shoppingCart.findIndex(x => x._id === item._id) > -1 ? true : false;
-  }
 
-  loadMore() {
-    this.page++;
-    this.loading = true;
-    this.feedService.getFeed(this.page).subscribe(
-      (res: Item[]) => {
-        this.items = [...this.items, ...res];
-        this.loading = false;
-      }
-    )
-  }
+
 }
