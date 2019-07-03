@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HighlightDirective } from './directives/highlight.directive';
 import { InfinteScrollDirective } from './directives/infinte-scroll.directive';
 import { NgNotIfDirective } from './directives/ng-not-if.directive';
-import { DiscountPipe } from './discount.pipe';
+import { DiscountPipe } from './pipes/discount.pipe';
 
 @NgModule({
   declarations: [
