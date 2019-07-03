@@ -1,9 +1,9 @@
 <div class="item">
-    <div class="title">
+    <div class="title" appHighlight [color]="'green'">
         {{item.description}}
     </div>
     <img class="img" [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}">
-    <div>{{item.price | currency}}</div>
+    <div appHighlight>{{item.price | currency}}</div>
     <div>
         <button class="btn btn-primary" *ngIf="existInCart; else elseBlock"
         (click)="addToCartClicked(item)">Add to cart</button>
