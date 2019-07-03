@@ -9,7 +9,6 @@ export class HighlightDirective implements AfterViewInit {
   
   constructor(private element: ElementRef,
     private renderer: Renderer2) { 
-    console.log(this.element);
   }
 
   ngAfterViewInit(): void {

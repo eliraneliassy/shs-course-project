@@ -3,7 +3,7 @@
         {{item.description}}
     </div>
     <img class="img" [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}">
-    <div appHighlight>{{item.price | currency}}</div>
+    <div appHighlight>{{item.price | currency | discount}}</div>
     <div>
         <button class="btn btn-primary" *ngIf="existInCart; else elseBlock"
         (click)="addToCartClicked(item)">Add to cart</button>

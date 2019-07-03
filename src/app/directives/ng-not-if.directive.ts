@@ -3,21 +3,19 @@ import { Directive, ViewContainerRef, TemplateRef, Input, AfterViewInit } from '
 @Directive({
   selector: '[NgNotIf]'
 })
-export class NgNotIfDirective implements AfterViewInit {
+export class NgNotIfDirective {
 
-  condition: string;
+  condition: boolean;
 
-  @Input() set NgNotIf(condition: string) {
-    this.condition = condition;
+  @Input() set NgNotIf(condition: boolean) {
+    if (condition) {
+      this.viewContainer.clear();
+    } else {
+      this.viewContainer.createEmbeddedView(this.templateRef);
+    }
   }
 
   constructor(private viewContainer: ViewContainerRef,
     private templateRef: TemplateRef<any>) { }
-
-  ngAfterViewInit(): void {
-    throw new Error("Method not implemented.");
-  }
-
-
 
 }
