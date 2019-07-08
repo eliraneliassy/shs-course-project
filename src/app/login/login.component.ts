@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  name: string = 'eliran';
   constructor() { }
 
   ngOnInit() {
+  }
+
+  submit(form){
+    console.log(form);
   }
 
 }

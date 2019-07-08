@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { FeedComponent } from './feed/feed.component';
 import { LoginComponent } from './login/login.component';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProductPageComponent } from './product-page/product-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
