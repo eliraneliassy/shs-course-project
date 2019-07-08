@@ -13,6 +13,7 @@ import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FeedComponent } from './feed/feed.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FeedComponent } from './feed/feed.component';
     NgNotIfDirective,
     DiscountPipe,
     HeaderComponent,
-    FeedComponent
+    FeedComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

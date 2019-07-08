@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { Item } from '../item';
 
 @Injectable({
@@ -7,11 +8,11 @@ import { Item } from '../item';
 })
 export class CartService {
 
-  private _cart: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>(null);
+  private _cart: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>([]);
 
   constructor() { }
 
-  getCart(): Observable<Item[]>{
+  getCart(): Observable<Item[]> {
     return this._cart.asObservable();
   }
 
@@ -19,17 +20,29 @@ export class CartService {
     this._cart.next(items);
   }
 
-  addToCart(item: Item){
+  addToCart(item: Item) {
+    const cart: Item[] = this._cart.value;
+    cart.push(item);
+    this.setCart(cart);
+  }
+
+  removeFromCart(item: Item) {
+    const cart: Item[] = this._cart.value;
+    const index = cart.findIndex(x => x._id === item._id);
+    if (index > -1) {
+      cart.splice(index, 1);
+    }
+
+    this.setCart(cart);
 
   }
 
-  removeFromCart(item: Item){
+  existInCart(item: Item): boolean {
+    const cart: Item[] = this._cart.value;
 
+    return cart.findIndex(x => x._id === item._id) > -1 ? true : false;
   }
 
-  existInCart(item: Item): boolean{
-    return false;
-  }
 
 
 }
