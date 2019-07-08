@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private router: Router) { }
   ngOnInit(): void {
-    this.authService.setUserName('Motti');
+    
     this.userSub =
       this.authService.getUserName()
         .subscribe((user: string) => this.user = user);
