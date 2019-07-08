@@ -16,12 +16,15 @@ export class ProductPageComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.route.data.subscribe(data => this.item = data.item)
+
     // const productId = this.route.snapshot.params['id'];
-    this.route.params.subscribe((params: Params) => 
-    {
-      this.feedService.getFeed(0).subscribe((res: Item[]) =>
-      this.item = res.find(x => x._id === params['id']))
-    })
+    // this.route.params.subscribe((params: Params) => 
+    // {
+    //   this.feedService.getFeed(0).subscribe((res: Item[]) =>
+    //   this.item = res.find(x => x._id === params['id']))
+    // })
     
     // this.route.queryParams.subscribe((params: Params) => 
     // {
