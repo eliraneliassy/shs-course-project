@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../item';
 import { FeedService } from '../services/feed.service';
 import { CartService } from '../services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -18,7 +19,8 @@ export class FeedComponent implements OnInit {
 
 
   constructor(private feedService: FeedService,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private router: Router) { }
 
   ngOnInit(): void {
     //this.feedService.getFeed(0).subscribe((items: Item[]) => this.items = items);
@@ -58,6 +60,10 @@ export class FeedComponent implements OnInit {
         this.loading = false;
       }
     )
+  }
+
+  goToProduct(item){
+    this.router.navigate(['/product', item._id])
   }
 
 }

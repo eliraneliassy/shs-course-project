@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FeedComponent } from './feed/feed.component';
 import { LoginComponent } from './login/login.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LoginComponent } from './login/login.component';
     DiscountPipe,
     HeaderComponent,
     FeedComponent,
-    LoginComponent
+    LoginComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,
