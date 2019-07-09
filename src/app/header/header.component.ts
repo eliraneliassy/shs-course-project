@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap, map, filter } from 'rxjs/operators';
 import { SugestionsService } from '../sugestions.service';
 
 @Component({
@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term) => this.suggestionService.getSuggestions(term)),
+      filter(x => !!x),
       map((obj) => obj.items)
     )
     .subscribe((res) => console.log(res));

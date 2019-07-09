@@ -12,4 +12,6 @@ Hello {{user}}
     </a>
 </div>
 
-<input placeholder="Search..." (input)="search($event.target.value)">
+<mat-form-field>
+    <input placeholder="Search..." (input)="search($event.target.value)" matInput>
+</mat-form-field>
