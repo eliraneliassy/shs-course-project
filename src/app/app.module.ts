@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { LoggerModule } from 'projects/logger/src/public-api';
 
 
 
@@ -29,7 +30,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     SharedModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    LoggerModule.init('Motti app')
   ],
   providers: [],
   bootstrap: [AppComponent]
