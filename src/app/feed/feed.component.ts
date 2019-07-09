@@ -63,7 +63,7 @@ export class FeedComponent implements OnInit {
   }
 
   goToProduct(item){
-    this.router.navigate(['/product', item._id])
+    this.router.navigate(['/feed/product', item._id])
   }
 
 }
