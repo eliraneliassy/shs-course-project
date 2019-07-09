@@ -27,29 +27,29 @@ export class ItemComponent implements OnInit, AfterViewChecked, AfterViewInit, O
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
+    // console.log('ngOnInit');
   }
 
   ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked');
+    // console.log('ngAfterViewChecked');
   }
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
+    // console.log('ngAfterViewInit');
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges', changes);
+    // console.log('ngOnChanges', changes);
   }
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
+    // console.log('ngOnDestroy');
   }
   ngDoCheck(): void {
-    console.log('ngDoCheck');
+    // console.log('ngDoCheck');
   }
   ngAfterContentChecked(): void {
-    console.log('ngAfterContentChecked');
+    // console.log('ngAfterContentChecked');
   }
   ngAfterContentInit(): void {
-    console.log('ngAfterContentInit');
+    // console.log('ngAfterContentInit');
   }
 
 }

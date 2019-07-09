@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgNotIfDirective } from './directives/ng-not-if.directive';
-import { HeaderComponent } from './header/header.component';
+
 import { SharedModule } from './shared/shared.module';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
