@@ -13,10 +13,10 @@ import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FeedComponent } from './feed/feed.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,16 +28,12 @@ import { RegisterComponent } from './register/register.component';
     DiscountPipe,
     HeaderComponent,
     FeedComponent,
-    LoginComponent,
-    ProductPageComponent,
-    RegisterComponent
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
