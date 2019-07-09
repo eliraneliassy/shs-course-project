@@ -3,6 +3,8 @@ import { Item } from '../item';
 import { FeedService } from '../services/feed.service';
 import { CartService } from '../services/cart.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @Component({
   selector: 'app-feed',
@@ -20,7 +22,8 @@ export class FeedComponent implements OnInit {
 
   constructor(private feedService: FeedService,
     private cartService: CartService,
-    private router: Router) { }
+    private router: Router,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     //this.feedService.getFeed(0).subscribe((items: Item[]) => this.items = items);
@@ -62,8 +65,10 @@ export class FeedComponent implements OnInit {
     )
   }
 
-  goToProduct(item){
-    this.router.navigate(['/feed/product', item._id])
+  goToProduct(item) {
+    // this.router.navigate(['/feed/product', item._id])
+    this.dialog.open(ProductPageComponent,
+      { data: { item } });
   }
 
 }

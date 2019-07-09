@@ -6,6 +6,7 @@ import { FeedComponent } from './feed.component';
 
 import { SharedModule } from '../shared/shared.module';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -13,7 +14,9 @@ import { ProductPageComponent } from './product-page/product-page.component';
   imports: [
     CommonModule,
     FeedRoutingModule,
-    SharedModule
-  ]
+    SharedModule,
+    MatDialogModule
+  ],
+  entryComponents: [ProductPageComponent]
 })
 export class FeedModule { }
