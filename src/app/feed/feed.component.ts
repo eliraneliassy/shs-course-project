@@ -44,7 +44,7 @@ export class FeedComponent implements OnInit {
   }
 
   addToCart(item: Item) {
-    // this.shoppingCart.push(item);
+    // thiss.shoppingCart.push(item);
     this.cartService.addToCart(item);
   }
 
@@ -66,12 +66,14 @@ export class FeedComponent implements OnInit {
   loadMore() {
     this.page++;
     this.loading = true;
-    this.feedService.getFeed(this.page).subscribe(
-      (res: Item[]) => {
-        this.items = [...this.items, ...res];
-        this.loading = false;
-      }
-    )
+    // this.feedService.getFeed(this.page).subscribe(
+    //   (res: Item[]) => {
+    //     this.items = [...this.items, ...res];
+    //     this.loading = false;
+    //   }
+    // )
+
+    this.store.dispatch(new LoadFeed());
   }
 
   goToProduct(item) {

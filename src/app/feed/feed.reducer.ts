@@ -26,6 +26,10 @@ export function reducer(state = initialState, action: FeedActions): FeedState {
       return {...state, loading: false, items: [...state.items, ...action.payload]}
     }
 
+    case (FeedActionTypes.IncreasePAge): {
+      return {...state, page: state.page + 1}
+    }
+
 
 
     default:

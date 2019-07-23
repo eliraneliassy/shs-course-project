@@ -3,8 +3,8 @@ import { Item } from '../item';
 
 export enum FeedActionTypes {
   LoadFeed = '[Feed] Load Feed',
-  LoadFeedSucces = '[Feed] Load Feed Success'
-
+  LoadFeedSucces = '[Feed] Load Feed Success',
+  IncreasePAge = '[Feed] Increase Page'
 
 }
 
@@ -18,5 +18,10 @@ export class LoadFeedSuccess implements Action {
   constructor(public payload: Item[]) { }
 }
 
+export class IncreasePage implements Action {
+  readonly type = FeedActionTypes.IncreasePAge;
 
-export type FeedActions = LoadFeed | LoadFeedSuccess;
+}
+
+
+export type FeedActions = LoadFeed | LoadFeedSuccess | IncreasePage;
