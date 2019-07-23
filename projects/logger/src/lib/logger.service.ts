@@ -1,6 +1,7 @@
-import { Injectable, Inject, InjectionToken } from '@angular/core';
+import { Injectable, Inject, InjectionToken, Optional } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, EMPTY, of } from 'rxjs';
+import { catchError, retry, retryWhen, tap } from 'rxjs/operators';
 
 export const APPNAME = new InjectionToken<string>('App Name');
 
@@ -9,11 +10,13 @@ export const APPNAME = new InjectionToken<string>('App Name');
 })
 export class LoggerService implements HttpInterceptor {
   
-  constructor(@Inject(APPNAME) private appName: string) { }
+  constructor(@Optional() @Inject(APPNAME) private appName: string) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): 
   Observable<HttpEvent<any>> {
-    console.log('App name :' + this.appName, req)
-    return next.handle(req);
+    // console.log('App name :' + this.appName, req)
+    return next.handle(req).pipe(
+      retry(3)      
+    );
   }
 }

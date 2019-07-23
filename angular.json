@@ -157,5 +157,8 @@
       }
     }
   },
-  "defaultProject": "shs-course-project"
+  "defaultProject": "shs-course-project",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
