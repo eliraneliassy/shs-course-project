@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map, filter } from 'rxjs/operators';
 import { SugestionsService } from '../sugestions.service';
+import { Store } from '@ngrx/store';
+import { getUser } from '../auth/auth.selectors';
 
 @Component({
   selector: 'app-header',
@@ -18,10 +20,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService,
     private router: Router,
-    private suggestionService: SugestionsService) { }
+    private suggestionService: SugestionsService,
+    private store: Store<any>) { }
 
   ngOnInit() {
-    this.authService.getUserName().subscribe((user: string) => this.user = user);
+    // this.authService.getUserName().subscribe((user: string) => this.user = user);
+
+    this.store.select(getUser).subscribe((user: string) => this.user = user);
 
     this.searchSubscription = this.search$.pipe(
       debounceTime(300),

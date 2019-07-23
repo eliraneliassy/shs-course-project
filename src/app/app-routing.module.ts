@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { FeedComponent } from './feed/feed.component';
-import { LoginComponent } from './auth/login/login.component';
-import { ProductResolveService } from './services/product-resolve.service';
-import { RegisterComponent } from './auth/register/register.component';
-import { AuthGuard } from './guards/auth.guard';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },

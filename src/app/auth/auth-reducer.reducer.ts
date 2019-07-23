@@ -17,8 +17,8 @@ export function reducer(state = initialState, action: AuthActions): AuthState {
     case (AuthActionTypes.UserLogin):
       return { ...state, loading: true };
 
-    case (AuthActionTypes.UserLoginSuccess): 
-    return {...state, loading: false, user: action.payload}
+    case (AuthActionTypes.UserLoginSuccess):
+      return { ...state, loading: false, user: action.payload }
 
     default:
       return state;

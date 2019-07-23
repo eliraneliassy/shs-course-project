@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class FeedService {
 
-  BASE_URL = `https://api.fashbash.co/api1`;
+  BASE_URL = `https://api.fashbash.co/api`;
 
   constructor(private httpClient: HttpClient) { }
 
