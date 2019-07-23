@@ -5,6 +5,9 @@ import { CartService } from '../services/cart.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { Store } from '@ngrx/store';
+import { LoadFeed } from './feed.actions';
+import { getItems } from './feed.selectors';
 
 @Component({
   selector: 'app-feed',
@@ -22,12 +25,18 @@ export class FeedComponent implements OnInit {
 
   constructor(private feedService: FeedService,
     private cartService: CartService,
-    private router: Router,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private store: Store<any>) { }
 
   ngOnInit(): void {
     //this.feedService.getFeed(0).subscribe((items: Item[]) => this.items = items);
-    this.feedService.getFeed(this.page).subscribe((res: Item[]) => this.items = res);
+    // this.feedService.getFeed(this.page).subscribe((res: Item[]) => this.items = res);
+
+    this.store.dispatch(new LoadFeed());
+
+    this.store.select(getItems)
+    .subscribe((items) => this.items = items)
+
     this.cartService.getCart().subscribe(cart => {
       this.shoppingCart = cart;
       console.log(this.shoppingCart);
